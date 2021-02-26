@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RestaurantAPI.Entities;
 
 namespace RestaurantAPI
 {
@@ -29,11 +30,15 @@ namespace RestaurantAPI
 			// services.AddScoped<>();		// Jeden obiekt przy ka¿dym zapytaniu od clienta
 			services.AddTransient<IWeatherForecastService, WeatherForecastService>();		//Nowe obiekty tworzone gdy odwolujemy sie do konstruktora
 			services.AddControllers();
+			services.AddDbContext<RestaurantDBContext>();
+			services.AddScoped<RestaurantSeeder>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env,RestaurantSeeder seeder)
 		{
+			seeder.Seed();
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
