@@ -28,7 +28,7 @@ namespace RestaurantAPI
 		{
 			//services.AddSingleton<>()  Dana zale¿noœc utworzona tylko raz w ca³ym cyklu zycia aplikacji
 			// services.AddScoped<>();		// Jeden obiekt przy ka¿dym zapytaniu od clienta
-			services.AddTransient<IWeatherForecastService, WeatherForecastService>();		//Nowe obiekty tworzone gdy odwolujemy sie do konstruktora
+					// AddTransient Nowe obiekty tworzone gdy odwolujemy sie do konstruktora
 			services.AddControllers();
 			services.AddDbContext<RestaurantDBContext>();
 			services.AddScoped<RestaurantSeeder>();

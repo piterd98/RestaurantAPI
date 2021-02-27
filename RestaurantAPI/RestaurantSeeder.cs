@@ -23,6 +23,7 @@ namespace RestaurantAPI
 			    {
 				    var restaurants = GetRestaurants();
 				    _dbContext.Restaurants.AddRange(restaurants);
+				    _dbContext.SaveChanges();
 			    }
 		    }
 
